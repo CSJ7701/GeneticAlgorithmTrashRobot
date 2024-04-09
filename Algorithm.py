@@ -1,6 +1,9 @@
 import itertools
 from Robot import Agent
 import random
+import tkinter as tk
+import os
+import copy
 
 class Algorithm:
     def __init__(self, population_size, mutation_rate, agent:Agent):
@@ -86,6 +89,9 @@ class Algorithm:
                     # print(f"Wall. P: {points}")
                 # print(f"Random. P:{points} @:{self.agent.position}")
             i=i+1
+        # print(f"Points: {points}\nSum: {sum(points)}")
+        # print(f"\nPath:\n{self.agent.path}\nGathered Cans: {self.agent.gathered_can_locations}\n")
+        # Plotter(self.agent)
         return points, sum(points)
 
     def MakeGeneration(self):
@@ -104,10 +110,15 @@ class Algorithm:
         while i < len(gen):
             ind=gen[i]
             score_list, total_score=self.EvaluateIndividual(ind)
+            if points:
+                if total_score > max(points):
+                    best_path=self.agent.path
+            else:
+                best_agent=copy.deepcopy(self.agent)
             # print(score_list)
             points.append(total_score)
             i=i+1
-        return points
+        return points, best_agent
 
     def SelectContenders(self, gen, points):
 
