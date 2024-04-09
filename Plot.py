@@ -31,8 +31,12 @@ class Plotter:
             else:
                 plt.plot(y,x,markersize=20, marker='o', color='red')
 
+            # I don't store information about when the robot attempts, and fails, to pick up a can.
+            # I only store information about when the robot attempts to pick up a can that is actually a can.
+
     def plot_agent(self):
         ani=animation.FuncAnimation(self.fig, self.update_agent, frames=len(self.agent.path)+1, interval=400, repeat=True)
+        print(f"\n=======\nPath:\n{self.agent.path}\n\nGathered Can Locations: {self.agent.gathered_can_locations}\n")
         plt.axis('off')
         plt.show()
         # export_file=os.path.join('assets', self.file_name_tag + '.gif')
