@@ -7,9 +7,10 @@ class Agent:
         self.path.append(self.position)
         self.move_limit=200
         self.wall_penalty=2
-        self.can_bonus=10
+        self.can_bonus=20
         self.stay_penalty=1
-        self.pickup_penalty=1
+        self.pickup_penalty=2
+        self.crossing_penalty=5
         self.gathered_can_locations=[]
         self.board=board
 
@@ -20,7 +21,7 @@ class Agent:
         self.gathered_can_locations=[]
 
     def IsCan(self, target):
-        if self.board[target[0], target[1]] == 1:
+        if self.board[target[0], target[1]] == 1 and target not in self.gathered_can_locations:
             return True
         else:
             return False
@@ -32,6 +33,10 @@ class Agent:
             return True
         else:
             return False
+
+    def IsOnPath(self, target):
+        exists=any(target == sublist for sublist in self.path)
+        return exists
 
     def CheckArea(self) -> list:
         """
@@ -99,6 +104,7 @@ class Agent:
         if self.IsCan(self.position) and self.position not in self.gathered_can_locations:
             self.gathered_can_locations.append(self.position)
             # print(f"Gathered Cans: {self.gathered_can_locations}")
+            # print(f"     Pickup @ {self.position}")
             return True
         else:
             return False
