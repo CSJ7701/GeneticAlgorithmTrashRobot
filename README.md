@@ -47,7 +47,7 @@ It also displays information in the terminal about each generation's general per
 ## Requirements
 **Python** - preferrably 3.10
 Most of these libraries used should come with your python installation. They are listed here in case they do not.
-Use [pip][https://google.com] to install any missing libraries.
+Use [[pip][https://google.com]] to install any missing libraries.
 *Numpy*
 *Matplotlib*
 *itertools*
