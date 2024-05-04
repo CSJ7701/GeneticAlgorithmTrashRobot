@@ -48,10 +48,10 @@ It also displays information in the terminal about each generation's general per
 **Python** - preferrably 3.10
 Most of these libraries used should come with your python installation. They are listed here in case they do not.
 Use [pip](https://pypi.org/project/pip/) to install any missing libraries.
-*Numpy*
-*Matplotlib*
-*itertools*
-*random*
-*os*
-*copy*
+- *Numpy*
+- *Matplotlib*
+- *itertools*
+- *random*
+- *os*
+- *copy*
 
